@@ -1,3 +1,0 @@
-com\formacionbdi\springboot\app\zuul\SpringbootServicioZuulServerApplication.class
-com\formacionbdi\springboot\app\zuul\filters\PreTiempoTranscurridoFilter.class
-com\formacionbdi\springboot\app\zuul\filters\PostTiempoTranscurridoFilter.class
