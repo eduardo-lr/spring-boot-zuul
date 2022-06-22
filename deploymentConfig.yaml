@@ -1,0 +1,32 @@
+kind: "DeploymentConfig"
+apiVersion: "v1"
+metadata:
+  name: "zuul-deployment"
+spec:
+  template: 
+    metadata:
+      labels:
+        name: "zuul"
+    spec:
+      containers:
+        - name: "zuul-container"
+          image: "zuul-image:latest"
+          ports:
+            - containerPort: 8090
+              protocol: "TCP"
+  replicas: 1 
+  triggers:
+    - type: "ConfigChange" 
+    - type: "ImageChange" 
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - "zuul-container"
+        from:
+          kind: "ImageStreamTag"
+          name: "zuul-image:latest"
+  strategy: 
+    type: "Rolling"
+  paused: false 
+  revisionHistoryLimit: 2 
+  minReadySeconds: 0 
